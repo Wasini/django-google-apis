@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-sldb*n_-p2umakc25r#+h!(22-hcu75q3oh3j20r*a^!$mogsg
 # API Keys
 
 GOOGLE_API_KEY = config('GOOGLE_API_KEY')
-RECAPTCHA_KEY = config('RECAPTCHA_KEY')
-RECAPTCHA_SECRET_KEY = config('RECAPTCHA_SECRET_KEY')
+RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
