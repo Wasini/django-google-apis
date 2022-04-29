@@ -10,7 +10,7 @@ def route(request):
 	context = {
 	"google_api_key": settings.GOOGLE_API_KEY,
 	"base_country": settings.BASE_COUNTRY}
-	return render(request, 'main/route.html', context)
+	return render(request, 'main/routes.html', context)
 
 
 '''

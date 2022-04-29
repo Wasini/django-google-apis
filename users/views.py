@@ -12,6 +12,7 @@ from django_google_apis.mixins import (
     reCAPTCHAValidation,
     FormErrors,
     RedirectParams,
+    is_ajax,
 )
 
 from .forms import (
@@ -44,7 +45,7 @@ def profile_view(request):
 
     form = UserProfileForm(instance=up)
 
-    if request.is_ajax():
+    if is_ajax(request):
         form = UserProfileForm(data=request.POST, instance=up)
         if form.is_valid():
             obj = form.save()
@@ -84,7 +85,7 @@ class SignUpView(AjaxFormMixin, FormView):
     # over write the mixin logic to get, check and save reCAPTURE score
     def form_valid(self, form):
         response = super(AjaxFormMixin, self).form_valid(form)
-        if self.request.is_ajax():
+        if is_ajax(self.request):
             token = form.cleaned_data.get('token')
             captcha = reCAPTCHAValidation(token)
             if captcha["success"]:
@@ -118,7 +119,7 @@ class SignInView(AjaxFormMixin, FormView):
 
     def form_valid(self, form):
         response = super(AjaxFormMixin, self).form_valid(form)
-        if self.request.is_ajax():
+        if is_ajax(self.request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             # attempt to authenticate user
